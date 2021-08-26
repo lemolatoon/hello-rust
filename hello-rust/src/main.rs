@@ -1,14 +1,22 @@
 
 fn main() {
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    let three_nums = vec![15, 3, 46];
+    println!("Initial vector: {:?}", three_nums);
 
-    let bytes = [0; 5];
+    let zeros = vec![0; 5];
+    println!("Zeros: {:?}", zeros);
 
+    let mut fruit = Vec::new();
 
-    let first = days[0];
+    fruit.push("Apple");
+    fruit.push("Banana");
+    fruit.push("Cherry");
+    println!("Fruits: {:?}", fruit);
 
-    let second = days[1];
+    println!("Pop off: {:?}", fruit.pop());
+    println!("Fruits: {:?}", fruit);
 
-    let seventh = days[6];
-    println!("{}", seventh)
+    fruit.push("Cherry");
+    fruit[2] = "Pineapple";
+    println!("Fruits: {:?}, three = {}", fruit, fruit[2])
 }

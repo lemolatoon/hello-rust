@@ -1,14 +1,6 @@
 fn main() {
-    let n = 5;
+    // compile error
+    let number: i8 = 128;
 
-    {
-        // shadow variable
-        let n = n + 5;
-
-        let n = n * 2;
-        
-        println!("n = {}", n);
-    }
-
-    println!("n = {}", n);
+    println!("The number is {}", number);
 }

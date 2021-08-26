@@ -1,37 +1,78 @@
 
 fn main() {
-    for_ex();
-}
+    let colors = ["Blue", "Green", "Red", "Silver"];
 
-fn for_ex() {
-    let big_birds = ["ostrich", "peacock", "stork"];
-    for bird in big_birds.iter() {
-        println!("The {} is a big bird.", bird);
-    }
+    let (mut index, mut order) = (1, 1);
 
-    for number in 0..5 {
-        println!("{}", number*2);
-    }
-}
+    let mut car: Car;
+    let mut miles = 1000;
+    let mut roof = true;
+    let mut engine: Transmission; 
 
-fn while_ex() {
-    let mut counter = 0;
-    while counter < 5 {
-        println!("We loop a while...");
-        counter = counter + 1;
-    } 
-}
+    while order <= 11 {
+        engine = Transmission::Manual;
 
-fn loop_ex() {
-    let mut counter: f64 = 1.0;
-    let mut n = 0;
-    let stop_loop = loop {
-        n += 1;
-        counter *= 0.9999;
-        if counter < 0.000001 {
-            break (n, counter);
+        if index % 2 != 0 {
+            car = car_factory(colors[index - 1].to_string(), engine, roof, miles)
+        } else {
+            car = car_factory(colors[index - 1].to_string(), engine, roof, 0)
         }
+
+        println!("{}: {}, Closed roof, {:?}, {}, {} miles", order, car.age.0, car.motor, car.color, car.age.1);
+
+        order += 1;
+        miles += 1000;
+
+        if index < 4 {
+            index += 1;
+        } else {
+            index = 1;
+        }
+    }
+
+}
+
+fn car_quality(miles: u32) -> (String, u32) {
+    let mut quality: (String, u32) = ("New".to_string(), 0);
+
+    if miles > 0 {
+        quality = ("Old".to_string(), miles);
+    }
+
+    return quality;
+}
+
+fn car_factory(color: String, motor: Transmission, roof: bool, miles: u32) -> Car {
+
+    // Create a new "Car" instance as requested
+    // - Bind first three fields to values of input arguments
+    // TO DO: Replace the "mileage" field from the previous exercise with an "age" field
+    // TO DO" The "age" field calls the "car_quality" function with the "miles" input argument 
+    let quality = car_quality(miles);
+    let age = Age(quality.0, quality.1);
+    let car = Car {
+        color: color,
+        motor: motor,
+        roof: roof,
+        age: age,
     };
 
-    println!("Break the loop at counter = {}, iter_num = {}.", stop_loop.1, stop_loop.0);
+    // Return new instance of "Car" struct
+    return car
 }
+
+
+#[derive(PartialEq, Debug)]
+struct Car {
+    color: String,
+    motor: Transmission,
+    roof: bool,
+    age: Age,
+}
+
+#[derive(PartialEq, Debug)]
+struct Age(String, u32);
+
+
+#[derive(PartialEq, Debug)]
+enum Transmission {Manual, SemiAuto, Automatic}

@@ -1,22 +1,20 @@
 
+use std::collections::HashMap;
+
 fn main() {
-    let three_nums = vec![15, 3, 46];
-    println!("Initial vector: {:?}", three_nums);
+    let mut reviews: HashMap<String, String> = HashMap::new();
 
-    let zeros = vec![0; 5];
-    println!("Zeros: {:?}", zeros);
+    reviews.insert("Ancient Roman History".to_string(), "Very accurate.".to_string());
+    reviews.insert(String::from("Cooking with Rhubarb"), "Sweet recipes.".to_string());
+    reviews.insert("Programming in Rust".to_string(), "Great exaples.".to_string());
 
-    let mut fruit = Vec::new();
+    let book: &str = "Programming in Rust";
+    let book: &str = "Cooking with Rhubarb";
+    println!("\nReview for \'{}\': {:?}", book, reviews.get(book));
 
-    fruit.push("Apple");
-    fruit.push("Banana");
-    fruit.push("Cherry");
-    println!("Fruits: {:?}", fruit);
+    let obsolete: &str = "Ancient Roman History";
+    println!("\n\'{}\' removed.", obsolete);
+    reviews.remove(obsolete);
 
-    println!("Pop off: {:?}", fruit.pop());
-    println!("Fruits: {:?}", fruit);
-
-    fruit.push("Cherry");
-    fruit[2] = "Pineapple";
-    println!("Fruits: {:?}, three = {}", fruit, fruit[2])
+    println!("\nReview for \'{}\': {:?}", obsolete, reviews.get(obsolete));
 }

@@ -1,20 +1,37 @@
 
-use std::collections::HashMap;
-
 fn main() {
-    let mut reviews: HashMap<String, String> = HashMap::new();
+    for_ex();
+}
 
-    reviews.insert("Ancient Roman History".to_string(), "Very accurate.".to_string());
-    reviews.insert(String::from("Cooking with Rhubarb"), "Sweet recipes.".to_string());
-    reviews.insert("Programming in Rust".to_string(), "Great exaples.".to_string());
+fn for_ex() {
+    let big_birds = ["ostrich", "peacock", "stork"];
+    for bird in big_birds.iter() {
+        println!("The {} is a big bird.", bird);
+    }
 
-    let book: &str = "Programming in Rust";
-    let book: &str = "Cooking with Rhubarb";
-    println!("\nReview for \'{}\': {:?}", book, reviews.get(book));
+    for number in 0..5 {
+        println!("{}", number*2);
+    }
+}
 
-    let obsolete: &str = "Ancient Roman History";
-    println!("\n\'{}\' removed.", obsolete);
-    reviews.remove(obsolete);
+fn while_ex() {
+    let mut counter = 0;
+    while counter < 5 {
+        println!("We loop a while...");
+        counter = counter + 1;
+    } 
+}
 
-    println!("\nReview for \'{}\': {:?}", obsolete, reviews.get(obsolete));
+fn loop_ex() {
+    let mut counter: f64 = 1.0;
+    let mut n = 0;
+    let stop_loop = loop {
+        n += 1;
+        counter *= 0.9999;
+        if counter < 0.000001 {
+            break (n, counter);
+        }
+    };
+
+    println!("Break the loop at counter = {}, iter_num = {}.", stop_loop.1, stop_loop.0);
 }

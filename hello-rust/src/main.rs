@@ -1,17 +1,11 @@
 fn main() {
-    if 1 == 2 {
-        println!("True, the numbers are equal.");
-    } else {
-        println!("False, the numbers are not equal");
-    }
-
-    let formal = true;
-
-    let greeting = if formal { // if used hre as an expression
-        "Good day to you."     // return a String
-    } else {
-        "Hey!"                 // return a String
-    };
-
-    println!("{}", greeting)   // prints "Good day to you."
 }
+
+// Classic struct with named fields
+struct Student {name: String, level: u8, pass: bool}
+
+// Tuple struct with data types only
+struct Grades(char, char, char, char, f32);
+
+// Unit struct
+struct Unit;

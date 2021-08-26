@@ -1,14 +1,14 @@
 fn main() {
-    println!("Hello, world!");
+    let n = 5;
 
-    let a_number = 10;
-    let mut b = 32;
+    {
+        // shadow variable
+        let n = n + 5;
 
-    println!("b = {}", b);
+        let n = n * 2;
+        
+        println!("n = {}", n);
+    }
 
-    b = 15;
-
-    println!("b = {}", b);
-
-    println!("it is like .format {} + {} = {}", a_number, b, a_number + b);
+    println!("n = {}", n);
 }

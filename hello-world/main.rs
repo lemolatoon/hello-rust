@@ -1,6 +1,17 @@
 fn main() {
-    // Tuple of length 3
-    let tuple_e = ("e", 5i32, true);
+    if 1 == 2 {
+        println!("True, the numbers are equal.");
+    } else {
+        println!("False, the numbers are not equal");
+    }
 
-    println!("Is '{}' the {}th letter of the alphabet? {}", tuple_e.0, tuple_e.1, tuple_e.2);
+    let formal = true;
+
+    let greeting = if formal { // if used hre as an expression
+        "Good day to you."     // return a String
+    } else {
+        "Hey!"                 // return a String
+    };
+
+    println!("{}", greeting)   // prints "Good day to you."
 }
